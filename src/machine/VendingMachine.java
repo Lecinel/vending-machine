@@ -20,7 +20,7 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 		setVendingMachine(id);
 	}
 
-	public void setVendingMachine(int idNum) {
+	public void setVendingMachine(int idNum) { // 자판기 선택 및 기능 수행
 		if (idNum > 1 && idNum < 3) {
 			NewestVendingMachine fvm = new NewestVendingMachine();
 			Button btnF = new Button(fvm.getFlowerList());
@@ -33,15 +33,15 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 				btnF.pushable();
 				btnF.setInputMoney(getVmMoney());
 				if (btnF.getBuyable() == true) {
-					System.out.printf("첫번째 자리를 입력해주세요 \n:");
+					System.out.printf("첫번째 숫자를 입력해주세요 \n:");
 					btnF.newOutPut();
 					vmMoney = btnF.getInputMoney();
+					System.out.println("현재돈 : " + vmMoney + "원 돈을 반홥하시겠습니까? 1.Yes 2.No");
+					pushReturnBtn = (stdIn.nextInt() == 2) ? false : true;
+				} else if (pushReturnBtn != true) {
+					System.out.println("불이 들어오지 않습니다.");
 					System.out.println("돈을 반홥하시겠습니까? 1.Yes 2.No");
-					pushReturnBtn = (stdIn.nextInt() > 1) ? false : true;
-				} else {
-					System.out.println("돈이 부족합니다.");
-					System.out.println("돈을 반홥하시겠습니까? 1.Yes 2.No");
-					pushReturnBtn = (stdIn.nextInt() > 1) ? false : true;
+					pushReturnBtn = (stdIn.nextInt() == 2) ? false : true;
 				}
 			} while (pushReturnBtn == false);
 			returnMoney();
@@ -65,12 +65,16 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 					} while (btnNum < 1 && btnNum > 9);
 					btnD.outPut(btnNum);
 					vmMoney = btnD.getInputMoney();
-					System.out.println("돈을 반환하시겠습니까? 1.Yes 2.No");
-					pushReturnBtn = (stdIn.nextInt() > 1) ? false : true;
-				} else {
-					System.out.println("살수 있는것이 없습니다.");
-					System.out.printf("금액을 투입하시겠습니까? 1.Yes 2.No \n:");
-					pushReturnBtn = (stdIn.nextInt() > 1) ? false : true;
+					btnD.lightable(getVmMoney());
+					btnD.pushable();
+					if (vmMoney != 0) {
+						System.out.println("현재돈 : " + vmMoney + "원 돈을 반환하시겠습니까? 1.Yes 2.No");
+						pushReturnBtn = (stdIn.nextInt() == 2) ? false : true;
+					}
+				} else if (pushReturnBtn != true) {
+					System.out.println("불이 들어오지 않습니다.");
+					System.out.printf("현재돈 : " + vmMoney + "금액을 투입하시겠습니까? 1.Yes 2.No \n:");
+					pushReturnBtn = (stdIn.nextInt() == 2) ? false : true;
 				}
 			} while (pushReturnBtn == false);
 			returnMoney();
@@ -80,7 +84,7 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 	}
 
 	@Override
-	public void inputMoney() {
+	public void inputMoney() { // 자판기 현금 투입
 		System.out.printf("금액을 투입해주세요.(press any number kye 투입안함) 1. 동전투입, 2.지폐투입 \n:");
 		select = stdIn.nextInt();
 		switch (select) {
@@ -114,13 +118,15 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 			default:
 				break;
 			}
+		default:
+			this.pushReturnBtn = true;
 		}
 	}
 
 	@Override
-	public int returnMoney() {
+	public int returnMoney() { // 자판기 돈 반환
 		System.out.println("돈을 반환합니다.");
-		System.out.println("넣은돈 " + vmMoney );
+		System.out.println("반환된 돈 " + vmMoney);
 		return vmMoney = 0;
 	}
 

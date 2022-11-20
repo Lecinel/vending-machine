@@ -2,7 +2,7 @@ package piece;
 
 import java.util.Scanner;
 
-public class Button implements Lightable, Pushable, OutPut { 
+public class Button implements Lightable, Pushable, OutPut {
 
 	private boolean[] lighting;
 	private boolean[] push;
@@ -57,12 +57,16 @@ public class Button implements Lightable, Pushable, OutPut {
 
 	@Override
 	public void outPut(int select) {
-		if (push[select - 1] == true && lighting[select - 1]) {
-			setInputMoney(getInputMoney() - productPrice[select - 1]);
-			productStock[select - 1] -= 1;
-			System.out.println(product[select - 1] + "을 구매했습니다.");
-		} else {
-			System.out.println("돈이 부족합니다.");
+		try {
+			if (push[select - 1] == true && lighting[select - 1]) {
+				setInputMoney(getInputMoney() - productPrice[select - 1]);
+				productStock[select - 1] -= 1;
+				System.out.println(product[select - 1] + "을 구매했습니다.");
+			} else {
+				System.out.println("불이 들어온 것이 없습니다.");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 
@@ -72,7 +76,7 @@ public class Button implements Lightable, Pushable, OutPut {
 		okBtn = false;
 		do {
 			btnNum = stdIn.nextInt();
-		} while (btnNum < 1 && btnNum > 9);
+		} while (btnNum < 1 || btnNum > 9);
 		if (btnNum == 1 && countNum == 0) {
 			System.out.printf("두번째 숫자를 입력해주세요: \n");
 			Btn: do {
@@ -89,7 +93,7 @@ public class Button implements Lightable, Pushable, OutPut {
 					countNum += 1;
 				}
 			} while (okBtn == false);
-		} else if (countNum == 0) {
+		} else if (countNum == 0 && btnNum < 10) {
 			while (okBtn == true) {
 				if (stdIn.next().equals("y")) {
 					okBtn = true;

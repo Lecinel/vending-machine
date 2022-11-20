@@ -2,8 +2,8 @@ package machine;
 
 public class ClassicVendingMachine {
 
-	private String[] product = { "1.콜라", "2.사이다", "3.커피", "4.사과주스", "5.오렌지주스", "6.이온음료", "7.탄산수", "8.미숫가루",
-			"9.과일탄사주스" };
+	private String[] product = { "1.콜라", "2.사이다", "3.커피", "4.사과주스", "5.오렌지주스", "6.이온음료",
+								 "7.탄산수", "8.미숫가루","9.과일탄사주스" };
 
 	private int[] productPrice = { 1000, 1000, 600, 600, 600, 700, 500, 700, 900 };
 
