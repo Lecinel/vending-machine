@@ -103,7 +103,7 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 			default:
 				break;  
 			} 
-			break; 
+			break;  
 		case 2:
 			System.out.printf("1.10000원, 2.5000원, 3.1000원 \n:");
 			select = stdIn.nextInt();
