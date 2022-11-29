@@ -7,3 +7,4 @@ public class Main {
 		VendingMachine vm = new VendingMachine();
 	}
 }
+ 

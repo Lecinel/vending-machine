@@ -20,7 +20,7 @@ public class Button implements Lightable, Pushable, OutPut {
 	public Button(int productList) {
 		this.count = productList;
 		this.lighting = new boolean[productList];
-		this.push = new boolean[productList];
+		this.push = new boolean[productList]; 
 		this.productStock = new int[productList];
 		for (int i = 0; i < productList; i++) {
 			lighting[i] = false;
