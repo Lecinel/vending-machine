@@ -112,7 +112,7 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 				addVmMoney(getVmMoney() + 10000);
 				break;
 			case 2:
-				addVmMoney(getVmMoney() + 5000);
+				addVmMoney(getVmMoney() + 5000); 
 				break;
 			case 3:
 				addVmMoney(getVmMoney() + 1000);

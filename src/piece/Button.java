@@ -25,8 +25,8 @@ public class Button implements Lightable, Pushable, OutPut {
 		for (int i = 0; i < productList; i++) {
 			lighting[i] = false;
 			push[i] = false;
-			productStock[i] = 5; 
-		}
+			productStock[i] = 5;  
+		}    
 	}
 
 	@Override
