@@ -13,9 +13,9 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 	private int btnNum, id;
 
 	Scanner stdIn = new Scanner(System.in);
-
+	
 	public VendingMachine() {
-		System.out.printf("자판기를 선택해주세요.(Default 음료자판기) 1.음료 2. 꽃자판기 \n:");
+		System.out.printf("자판기를 선택해주세요. 1.음료 2. 꽃자판기 \n:");
 		id = stdIn.nextInt();
 		setVendingMachine(id);
 	}
@@ -44,10 +44,10 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 					pushReturnBtn = (stdIn.nextInt() == 2) ? false : true;
 				}
 			} while (pushReturnBtn == false);
-			returnMoney();
+			returnMoney(); 
 			pushReturnBtn = false;
 
-		} else {
+		} else if (idNum == 1){
 			ClassicVendingMachine cvm = new ClassicVendingMachine();
 			Button btnD = new Button(cvm.getProductList());
 			btnD.setProduct(cvm.getProduct());
@@ -79,6 +79,8 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 			} while (pushReturnBtn == false);
 			returnMoney();
 			pushReturnBtn = false;
+		} else {
+			System.out.println("잘못 입력하셨습니다.");
 		}
 
 	}
@@ -137,5 +139,4 @@ public class VendingMachine implements InputMoney, ReturnMoney {
 	public void addVmMoney(int vmMoney) {
 		this.vmMoney = vmMoney;
 	}
-
 }

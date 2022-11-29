@@ -17,7 +17,6 @@ public class Button implements Lightable, Pushable, OutPut {
 	private int btnNum;
 	private String vacuum;
 	private boolean okBtn;
-
 	public Button(int productList) {
 		this.count = productList;
 		this.lighting = new boolean[productList];
@@ -60,7 +59,7 @@ public class Button implements Lightable, Pushable, OutPut {
 		try {
 			if (push[select - 1] == true && lighting[select - 1]) {
 				setInputMoney(getInputMoney() - productPrice[select - 1]);
-				productStock[select - 1] -= 1;
+				productStock[select - 1]--;
 				System.out.println(product[select - 1] + "을 구매했습니다.");
 			} else {
 				System.out.println("불이 들어온 것이 없습니다.");
@@ -123,5 +122,5 @@ public class Button implements Lightable, Pushable, OutPut {
 	public void setInputMoney(int inputMoney) {
 		this.inputMoney = inputMoney;
 	}
-
+	
 }
